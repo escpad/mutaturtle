@@ -16,6 +16,7 @@ var _jump     := JUMP_BASE
 @onready var _colorect : ColorRect        = $ColorRect
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	_update_shape()
 
 func apply_mutation(l: float, w: float, wt: float) -> void:

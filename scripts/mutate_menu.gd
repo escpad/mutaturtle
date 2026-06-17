@@ -13,7 +13,6 @@ signal mutation_changed(l: float, w: float, wt: float)
 var _updating := false
 
 func _ready() -> void:
-	# Set initial values (must happen before connecting signals)
 	length_slider.value = 34.0
 	width_slider.value  = 33.0
 	weight_slider.value = 33.0

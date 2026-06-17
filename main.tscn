@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cwbgi6rp2xm2w"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_mainsc"]
+[ext_resource type="Script" uid="uid://upf32hff8w4a" path="res://scripts/main.gd" id="1_mainsc"]
 [ext_resource type="PackedScene" uid="uid://xm0ihfoe880s" path="res://scenes/turtle.tscn" id="2_turtle"]
-[ext_resource type="PackedScene" uid="uid://bm3k7j9pq4nt1" path="res://scenes/mutate_menu.tscn" id="3_menu"]
+[ext_resource type="PackedScene" uid="uid://bm3k7kapq4nt1" path="res://scenes/mutate_menu.tscn" id="3_menu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(934, 20)
@@ -19,4 +19,4 @@ position = Vector2(607, 249)
 position = Vector2(607, 532)
 shape = SubResource("RectangleShape2D_ig7tw")
 
-[node name="MutateMenuLayer" parent="." instance=ExtResource("3_menu")]
+[node name="MutateMenuLayer" parent="." unique_id=120141829 instance=ExtResource("3_menu")]
