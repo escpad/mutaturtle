@@ -1,8 +1,17 @@
 [gd_scene format=3 uid="uid://xm0ihfoe880s"]
 
+[ext_resource type="Script" uid="uid://duxwr3bicmgof" path="res://scenes/turtle.gd" id="1_diba4"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ry61x"]
 
 [node name="Turtle" type="CharacterBody2D" unique_id=389654617]
+script = ExtResource("1_diba4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1280773547]
 shape = SubResource("RectangleShape2D_ry61x")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1660499098]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
