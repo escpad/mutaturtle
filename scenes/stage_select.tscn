@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://stage_select_sc01"]
+
+[ext_resource type="Script" path="res://scripts/stage_select.gd" id="1_ssscr"]
+
+[node name="StageSelect" type="Control"]
+script = ExtResource("1_ssscr")
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.08, 0.08, 0.12, 1)
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -210.0
+offset_right = 120.0
+offset_bottom = 210.0
+
+[node name="Title" type="Label" parent="VBox"]
+layout_mode = 2
+text = "SELECT LEVEL"
+horizontal_alignment = 1
+
+[node name="Level1" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Level 1 — The Squeeze"
+
+[node name="Level2" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Level 2 — High Jump"
+
+[node name="Level3" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Level 3 — Crawl"
+
+[node name="Level4" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Level 4 — Budget Crunch"
+
+[node name="Level5" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Level 5 — The Vault"
+
+[node name="Level6" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Level 6 — Fork"
+
+[node name="Level7" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Level 7 — The One Config"
+
+[node name="Back" type="Button" parent="VBox"]
+layout_mode = 2
+text = "← Back"
