@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://level1_sc01"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_lvlscr"]
+[ext_resource type="PackedScene" uid="uid://xm0ihfoe880s" path="res://scenes/turtle.tscn" id="2_turtle"]
+[ext_resource type="PackedScene" uid="uid://bm3k7kapq4nt1" path="res://scenes/mutate_menu.tscn" id="3_menu"]
+[ext_resource type="PackedScene" uid="uid://goal_sc01" path="res://scenes/goal.tscn" id="4_goal"]
+
+[sub_resource type="RectangleShape2D" id="RS_floor"]
+size = Vector2(2000, 20)
+
+[sub_resource type="RectangleShape2D" id="RS_wall_l"]
+size = Vector2(20, 570)
+
+[sub_resource type="RectangleShape2D" id="RS_wall_r"]
+size = Vector2(20, 570)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_lvlscr")
+level_num = 1
+
+[node name="Turtle" parent="." instance=ExtResource("2_turtle")]
+position = Vector2(200, 450)
+
+[node name="MutateMenuLayer" parent="." instance=ExtResource("3_menu")]
+
+[node name="Goal" parent="." instance=ExtResource("4_goal")]
+position = Vector2(1050, 555)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(750, 580)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RS_floor")
+
+[node name="Visual" type="Polygon2D" parent="Floor"]
+polygon = PackedVector2Array(-1000, -10, 1000, -10, 1000, 10, -1000, 10)
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(690, 285)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("RS_wall_l")
+
+[node name="Visual" type="Polygon2D" parent="LeftWall"]
+polygon = PackedVector2Array(-10, -285, 10, -285, 10, 285, -10, 285)
+color = Color(0.35, 0.35, 0.35, 1)
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(755, 285)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("RS_wall_r")
+
+[node name="Visual" type="Polygon2D" parent="RightWall"]
+polygon = PackedVector2Array(-10, -285, 10, -285, 10, 285, -10, 285)
+color = Color(0.35, 0.35, 0.35, 1)

@@ -24,7 +24,7 @@ func _input(event: InputEvent) -> void:
 			GameManager.go_to_stage_select()
 
 func _toggle_menu() -> void:
-	var opening := not mutate_menu.visible
+	var opening = not mutate_menu.visible
 	mutate_menu.visible = opening
 	get_tree().paused   = opening
 
