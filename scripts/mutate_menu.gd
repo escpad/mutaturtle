@@ -2,13 +2,14 @@ extends CanvasLayer
 
 signal mutation_changed(l: float, w: float, wt: float)
 
-@onready var length_slider : HSlider = $Overlay/Panel/VBox/LengthRow/LengthSlider
-@onready var width_slider  : HSlider = $Overlay/Panel/VBox/WidthRow/WidthSlider
-@onready var weight_slider : HSlider = $Overlay/Panel/VBox/WeightRow/WeightSlider
-@onready var length_label  : Label   = $Overlay/Panel/VBox/LengthRow/LengthValue
-@onready var width_label   : Label   = $Overlay/Panel/VBox/WidthRow/WidthValue
-@onready var weight_label  : Label   = $Overlay/Panel/VBox/WeightRow/WeightValue
-@onready var budget_label  : Label   = $Overlay/Panel/VBox/BudgetLabel
+@onready var panel         : PanelContainer = $Panel
+@onready var length_slider : HSlider = $Panel/VBox/LengthRow/LengthSlider
+@onready var width_slider  : HSlider = $Panel/VBox/WidthRow/WidthSlider
+@onready var weight_slider : HSlider = $Panel/VBox/WeightRow/WeightSlider
+@onready var length_label  : Label   = $Panel/VBox/LengthRow/LengthValue
+@onready var width_label   : Label   = $Panel/VBox/WidthRow/WidthValue
+@onready var weight_label  : Label   = $Panel/VBox/WeightRow/WeightValue
+@onready var budget_label  : Label   = $Panel/VBox/BudgetLabel
 
 var _updating := false
 
@@ -21,6 +22,20 @@ func _ready() -> void:
 	length_slider.value_changed.connect(_on_length_changed)
 	width_slider.value_changed.connect(_on_width_changed)
 	weight_slider.value_changed.connect(_on_weight_changed)
+
+func open_near(world_pos: Vector2) -> void:
+	var screen_pos := get_viewport().get_canvas_transform() * world_pos
+	var min_size   := panel.get_minimum_size()
+	# Appear to the right of the turtle; flip left if near screen edge
+	var vp         := get_viewport().get_visible_rect().size
+	var x          := screen_pos.x + 60.0
+	if x + min_size.x > vp.x:
+		x = screen_pos.x - min_size.x - 60.0
+	var y := screen_pos.y - min_size.y / 2.0
+	panel.position = Vector2(
+		clamp(x, 0.0, vp.x - min_size.x),
+		clamp(y, 0.0, vp.y - min_size.y)
+	)
 
 func _on_length_changed(value: float) -> void:
 	if _updating: return
@@ -42,8 +57,8 @@ func _compress_others(changed: HSlider, new_val: float) -> void:
 		if s != changed:
 			others.append(s)
 
-	var remaining    := 100.0 - new_val
-	var sum_others   := others[0].value + others[1].value
+	var remaining  := 100.0 - new_val
+	var sum_others := others[0].value + others[1].value
 
 	if sum_others > 0.0:
 		others[0].value = remaining * others[0].value / sum_others
@@ -54,7 +69,6 @@ func _compress_others(changed: HSlider, new_val: float) -> void:
 
 	_update_labels()
 	_updating = false
-
 	mutation_changed.emit(length_slider.value, width_slider.value, weight_slider.value)
 
 func _update_labels() -> void:

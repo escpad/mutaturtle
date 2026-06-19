@@ -27,6 +27,8 @@ func _toggle_menu() -> void:
 	var opening = not mutate_menu.visible
 	mutate_menu.visible = opening
 	get_tree().paused   = opening
+	if opening:
+		mutate_menu.open_near(turtle.global_position)
 
 func _on_goal_entered(body: Node2D) -> void:
 	if body == turtle:

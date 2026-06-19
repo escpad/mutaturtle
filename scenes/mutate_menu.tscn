@@ -6,99 +6,80 @@
 process_mode = 3
 script = ExtResource("1_menusc")
 
-[node name="Overlay" type="Control" parent="."]
-process_mode = 3
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Panel" type="PanelContainer" parent="."]
 
-[node name="Background" type="ColorRect" parent="Overlay"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.65)
-mouse_filter = 0
-
-[node name="Panel" type="PanelContainer" parent="Overlay"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -215.0
-offset_top = -155.0
-offset_right = 215.0
-offset_bottom = 155.0
-
-[node name="VBox" type="VBoxContainer" parent="Overlay/Panel"]
+[node name="VBox" type="VBoxContainer" parent="Panel"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Overlay/Panel/VBox"]
+[node name="Title" type="Label" parent="Panel/VBox"]
 layout_mode = 2
 text = "MUTATE"
 horizontal_alignment = 1
 
-[node name="LengthRow" type="HBoxContainer" parent="Overlay/Panel/VBox"]
+[node name="LengthRow" type="HBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
 
-[node name="LengthLabel" type="Label" parent="Overlay/Panel/VBox/LengthRow"]
+[node name="LengthLabel" type="Label" parent="Panel/VBox/LengthRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(70, 0)
 text = "Length"
 
-[node name="LengthSlider" type="HSlider" parent="Overlay/Panel/VBox/LengthRow"]
+[node name="LengthSlider" type="HSlider" parent="Panel/VBox/LengthRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(240, 0)
+custom_minimum_size = Vector2(200, 0)
 max_value = 100.0
 step = 1.0
 value = 34.0
 
-[node name="LengthValue" type="Label" parent="Overlay/Panel/VBox/LengthRow"]
+[node name="LengthValue" type="Label" parent="Panel/VBox/LengthRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(36, 0)
 text = "34"
 
-[node name="WidthRow" type="HBoxContainer" parent="Overlay/Panel/VBox"]
+[node name="WidthRow" type="HBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
 
-[node name="WidthLabel" type="Label" parent="Overlay/Panel/VBox/WidthRow"]
+[node name="WidthLabel" type="Label" parent="Panel/VBox/WidthRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(70, 0)
 text = "Width"
 
-[node name="WidthSlider" type="HSlider" parent="Overlay/Panel/VBox/WidthRow"]
+[node name="WidthSlider" type="HSlider" parent="Panel/VBox/WidthRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(240, 0)
+custom_minimum_size = Vector2(200, 0)
 max_value = 100.0
 step = 1.0
 value = 33.0
 
-[node name="WidthValue" type="Label" parent="Overlay/Panel/VBox/WidthRow"]
+[node name="WidthValue" type="Label" parent="Panel/VBox/WidthRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(36, 0)
 text = "33"
 
-[node name="WeightRow" type="HBoxContainer" parent="Overlay/Panel/VBox"]
+[node name="WeightRow" type="HBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
 
-[node name="WeightLabel" type="Label" parent="Overlay/Panel/VBox/WeightRow"]
+[node name="WeightLabel" type="Label" parent="Panel/VBox/WeightRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(70, 0)
 text = "Weight"
 
-[node name="WeightSlider" type="HSlider" parent="Overlay/Panel/VBox/WeightRow"]
+[node name="WeightSlider" type="HSlider" parent="Panel/VBox/WeightRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(240, 0)
+custom_minimum_size = Vector2(200, 0)
 max_value = 100.0
 step = 1.0
 value = 33.0
 
-[node name="WeightValue" type="Label" parent="Overlay/Panel/VBox/WeightRow"]
+[node name="WeightValue" type="Label" parent="Panel/VBox/WeightRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(36, 0)
 text = "33"
 
-[node name="BudgetLabel" type="Label" parent="Overlay/Panel/VBox"]
+[node name="BudgetLabel" type="Label" parent="Panel/VBox"]
 layout_mode = 2
 text = "Budget: 100 / 100"
 horizontal_alignment = 1

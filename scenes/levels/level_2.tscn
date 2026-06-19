@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://level2_sc01"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_lvlscr"]
+[ext_resource type="PackedScene" uid="uid://xm0ihfoe880s" path="res://scenes/turtle.tscn" id="2_turtle"]
+[ext_resource type="PackedScene" uid="uid://bm3k7kapq4nt1" path="res://scenes/mutate_menu.tscn" id="3_menu"]
+[ext_resource type="PackedScene" uid="uid://goal_sc01" path="res://scenes/goal.tscn" id="4_goal"]
+
+[sub_resource type="RectangleShape2D" id="RS_floor"]
+size = Vector2(2000, 20)
+
+[sub_resource type="RectangleShape2D" id="RS_platform"]
+size = Vector2(300, 20)
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_lvlscr")
+level_num = 2
+
+[node name="Turtle" parent="." instance=ExtResource("2_turtle")]
+position = Vector2(200, 450)
+
+[node name="MutateMenuLayer" parent="." instance=ExtResource("3_menu")]
+
+[node name="Goal" parent="." instance=ExtResource("4_goal")]
+position = Vector2(820, 250)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(750, 580)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RS_floor")
+
+[node name="Visual" type="Polygon2D" parent="Floor"]
+polygon = PackedVector2Array(-1000, -10, 1000, -10, 1000, 10, -1000, 10)
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(680, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+shape = SubResource("RS_platform")
+
+[node name="Visual" type="Polygon2D" parent="Platform"]
+polygon = PackedVector2Array(-150, -10, 150, -10, 150, 10, -150, 10)
+color = Color(0.55, 0.35, 0.15, 1)
