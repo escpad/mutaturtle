@@ -12,8 +12,12 @@ var body_size := Vector2(60.0, 40.0)
 var _gravity  := 980.0
 var _jump     := JUMP_BASE
 
-@onready var _col      : CollisionShape2D = $CollisionShape2D
-@onready var _colorect : ColorRect        = $ColorRect
+var _tex_normal := preload("res://assets/turtle.png")      as Texture2D
+var _tex_long   := preload("res://assets/long-turtle.png") as Texture2D
+var _tex_tall   := preload("res://assets/tall-turtle.png") as Texture2D
+
+@onready var _col    : CollisionShape2D = $CollisionShape2D
+@onready var _sprite : Sprite2D         = $Sprite2D
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -30,13 +34,19 @@ func _update_shape() -> void:
 	body_size.y = lerp(20.0,  80.0, width_val  / 100.0)
 	_gravity    = GRAVITY_BASE * lerp(0.3, 3.0, weight_val / 100.0)
 	_jump       = JUMP_BASE    * lerp(2.0, 0.5, weight_val / 100.0)
-
 	_col.shape.size = body_size
+	_update_sprite()
 
-	_colorect.offset_left   = -body_size.x / 2.0
-	_colorect.offset_top    = -body_size.y / 2.0
-	_colorect.offset_right  =  body_size.x / 2.0
-	_colorect.offset_bottom =  body_size.y / 2.0
+func _update_sprite() -> void:
+	var tex: Texture2D
+	if length_val > 50.0:
+		tex = _tex_long
+	elif width_val > 50.0:
+		tex = _tex_tall
+	else:
+		tex = _tex_normal
+	_sprite.texture = tex
+	_sprite.scale   = body_size / Vector2(tex.get_width(), tex.get_height())
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

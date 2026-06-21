@@ -19,6 +19,13 @@ func _ready() -> void:
 	weight_slider.value = 33.0
 	_update_labels()
 
+	var img := (load("res://assets/handle.png") as Texture2D).get_image()
+	img.resize(32, 32, Image.INTERPOLATE_LANCZOS)
+	var grabber := ImageTexture.create_from_image(img)
+	for slider in [length_slider, width_slider, weight_slider]:
+		slider.add_theme_icon_override("grabber",           grabber)
+		slider.add_theme_icon_override("grabber_highlight", grabber)
+
 	length_slider.value_changed.connect(_on_length_changed)
 	width_slider.value_changed.connect(_on_width_changed)
 	weight_slider.value_changed.connect(_on_weight_changed)
